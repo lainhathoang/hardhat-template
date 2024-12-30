@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf ./artifacts ./cache ./coverage ./types ./coverage.json",
-    "clean:all": "rm -rf ./artifacts ./cache ./coverage ./types ./coverage.json",
+    "clean:all": "rm -rf ./artifacts ./cache ./coverage ./types ./coverage.json ./node_modules",
     "compile": "hardhat compile",
-    "format": "prettier --write --plugin=prettier-plugin-solidity 'contracts/**/*.sol'",
-    "lint": "prettier --list-different --plugin=prettier-plugin-solidity 'contracts/**/*.sol'"
+    "format": "prettier --write --plugin=prettier-plugin-solidity \"**/*.{js,json,md,sol,ts,yml}\"",
+    "lint:sol": "solhint --max-warnings 0 \"contracts/**/*.sol\"",
+    "check": "pnpm format && pnpm lint"
   },
   "keywords": [],
   "author": "",
@@ -33,6 +34,8 @@
     "viem": "^2.7.6",
     "prettier": "^3.1.1",
     "prettier-plugin-solidity": "^1.2.0",
-    "@trivago/prettier-plugin-sort-imports": "^4.3.0"
+    "@trivago/prettier-plugin-sort-imports": "^4.3.0",
+    "solhint": "^4.0.0",
+    "solhint-plugin-prettier": "^0.1.0"
   }
 }
